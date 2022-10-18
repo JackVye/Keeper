@@ -1,0 +1,82 @@
+﻿<a class="btn" action="/OneTimeStart">One Time Start</a>
+
+<div class="row nowrap-row">
+    <div class="col-6">
+        <div class="vertical-whitespace"></div>
+        <div class="card left-card background-card">
+            <div class="card-body d-flex align-items-start flex-column">
+                <div class="card-title">
+                    <h3>Month [number]</h3>
+                </div>
+                <div class="card-text">
+                    You have [number] Gold. If you advance [number]% of the dungeon will be satisfied.
+                    You have [number] Food. If you advance [number]% of the dungeon will be satisfied.
+                    You have [number] Helpers. If you advance [number]% of the dungeon will be satisfied.
+                </div>
+                <div class="row justify-content-end stretch-to-width footer">
+                    <div class="col-3">
+                        <a class="btn btn-warning" href="/Home/Advance">Advance Month?</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="vertical-whitespace"></div>
+        <div class="card left-card background-card">
+            <div class="row stretch-to-width-h3 justify-content-center">
+                <div class="col-9 align-content-center fake-card-body">
+                    <div class="card-title">
+                        <h3>Unassigned items and units</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex justify-content-stretch flex-wrap">
+                <div class="row nowrap-row d-flex align-items-stretch stretch-to-width">
+                    <div class="col-6">
+                        <div class="card strech-to-fill foreground-card">
+                            <div class="card-body">
+                                @{
+                                    List<Keeper.Models.Unit> Units = (List<Keeper.Models.Unit>)ViewData["Units"];
+                                    foreach (Keeper.Models.Unit u in Units)
+                                    {
+                                        @Html.Partial("_units", u)
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card strech-to-fill foreground-card">
+                            <div class="card-body">
+                                @{
+                                    List<string> Items = (List<string>)ViewData["Items"];
+                                    foreach (string i in Items)
+                                    {
+                                        @Html.Partial("_items", i)
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vertical-whitespace"></div>
+    </div>
+    <div class="col-6">
+        <div class="vertical-whitespace"></div>
+        <div class="card background-card">
+            <div class="card-body right-card">
+                @{
+                    List<Keeper.Models.Region> Regions = (List<Keeper.Models.Region>)ViewData["Regions"];
+                    foreach (Keeper.Models.Region r in Regions)
+                    {
+                        @Html.Partial("_region", r)
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="vertical-whitespace"></div>
+    </div>
+</div>
